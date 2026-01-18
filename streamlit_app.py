@@ -6,18 +6,109 @@ from sklearn.metrics.pairwise import cosine_similarity
 # 1. PAGE CONFIGURATION
 st.set_page_config(page_title="DeadMLSociety", page_icon="🎬", layout="centered")
 
-# 2. CUSTOM CSS (Dark Theme)
+# 2. CUSTOM CSS (To match your Dark/Red Theme + Animation)
 st.markdown("""
     <style>
-    .stApp { background-color: #000000; color: #ffffff; }
-    h1 { font-family: 'Playfair Display', serif; color: #e50914 !important; text-shadow: 0 0 20px rgba(229, 9, 20, 0.6); text-align: center; font-size: 3.5rem !important; }
-    p, label { color: rgba(255, 255, 255, 0.8) !important; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
-    .stTextInput > div > div > input, .stTextArea > div > div > textarea { background-color: #1a1a1a; color: white; border: 1px solid #e50914; border-radius: 10px; }
-    .stButton > button { background-color: transparent; color: #e50914; border: 1px solid #e50914; border-radius: 12px; padding: 10px 24px; font-family: 'Playfair Display', serif; width: 100%; transition: all 0.3s ease; }
-    .stButton > button:hover { background-color: rgba(229, 9, 20, 0.1); box-shadow: 0 0 20px rgba(229, 9, 20, 0.6); color: white; border-color: #e50914; }
-    .movie-card { background-color: rgba(229, 9, 20, 0.05); border: 1px solid rgba(229, 9, 20, 0.3); padding: 20px; border-radius: 12px; margin-bottom: 15px; }
-    .movie-card:hover { transform: translateY(-5px); border-color: rgba(229, 9, 20, 0.8); }
-    h3 { color: #e50914 !important; margin-bottom: 5px; }
+    /* Background Color */
+    .stApp {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    
+    /* Title Style WITH ANIMATION */
+    h1 {
+        font-family: 'Playfair Display', serif;
+        color: #e50914 !important;
+        text-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+        text-align: center;
+        font-size: 4rem !important;
+        animation: logoIntro 2s ease-out forwards;
+    }
+    
+    /* Animation Keyframes */
+    @keyframes logoIntro {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+            letter-spacing: 20px;
+        }
+        80% {
+            opacity: 1;
+            transform: scale(1.1);
+            letter-spacing: 2px;
+        }
+        100% {
+            transform: scale(1);
+            letter-spacing: normal;
+        }
+    }
+
+    /* Subtitle/Text */
+    p, label {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem;
+    }
+    /* Input Box */
+    .stTextInput > div > div > input, .stTextArea > div > div > textarea {
+        background-color: #1a1a1a;
+        color: white;
+        border: 1px solid #e50914;
+        border-radius: 10px;
+    }
+    /* Button Style */
+    .stButton > button {
+        background-color: transparent;
+        color: #e50914;
+        border: 1px solid #e50914;
+        border-radius: 12px;
+        padding: 10px 24px;
+        font-family: 'Playfair Display', serif;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    .stButton > button:hover {
+        background-color: rgba(229, 9, 20, 0.1);
+        box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+        color: white;
+    }
+    /* Movie Cards */
+    .movie-card {
+        background-color: rgba(229, 9, 20, 0.05);
+        border: 1px solid rgba(229, 9, 20, 0.3);
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        transition: transform 0.3s;
+    }
+    .movie-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(229, 9, 20, 0.8);
+    }
+    h3 {
+        color: #e50914 !important;
+        margin-bottom: 5px;
+    }
+    /* Custom Footer Button */
+    .custom-link-btn {
+        display: inline-block;
+        text-decoration: none;
+        background-color: transparent;
+        color: #e50914;
+        border: 1px solid #e50914;
+        border-radius: 12px;
+        padding: 12px 28px;
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+    .custom-link-btn:hover {
+        background-color: rgba(229, 9, 20, 0.1);
+        box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+        color: white;
+        border-color: #ff4444;
+    }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
