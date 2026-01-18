@@ -130,7 +130,7 @@ vectorizer, matrix, movies = load_data()
 
 # THE UI
 st.title("DeadMLSociety")
-st.markdown("<p style='text-align: center; font-style: italic; margin-bottom: 40px;'>Show me the heart unfettered by foolish dreams and I'll show you a happy man.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-style: italic; margin-bottom: 40px;'>Show me a query unfettered by hidden desire, and I'll show you a soulless search.</p>", unsafe_allow_html=True)
 
 if movies is not None:
     user_input = st.text_area("Decode your conversation:", height=100, placeholder="Type here (e.g., I want a sad romantic movie)...")
