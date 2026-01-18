@@ -165,4 +165,4 @@ else:
     st.error("⚠️ Files missing! Please upload vectorizer.pkl, matrix.pkl, and movies.pkl to GitHub.")
 st.markdown("---") 
 st.subheader("Explore More")
-st.link_button("Visit DeadMLSociety ↗", "https://deadml-society.streamlit.app")
+st.link_button("Visit Our Other Half ↗", "https://deadml-society.streamlit.app")
