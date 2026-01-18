@@ -79,4 +79,4 @@ else:
 # --- Footer Link ---
 st.markdown("---") # Adds a visual divider line
 st.subheader("Explore More")
-st.link_button("Visit DeadMLSociety ↗", "https://deadmlsociety.streamlit.app")
+st.link_button("Visit DeadMLSociety ↗", "https://deadml-society.streamlit.app")
