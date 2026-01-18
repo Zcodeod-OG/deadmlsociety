@@ -74,3 +74,9 @@ if movies is not None:
             st.warning("Please enter some text first.")
 else:
     st.error("⚠️ Files missing! Please upload vectorizer.pkl, matrix.pkl, and movies.pkl to GitHub.")
+# ... (your existing code ends here) ...
+
+# --- Footer Link ---
+st.markdown("---") # Adds a visual divider line
+st.subheader("Explore More")
+st.link_button("Visit DeadMLSociety ↗", "https://deadmlsociety.streamlit.app")
