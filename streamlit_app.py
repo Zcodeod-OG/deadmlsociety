@@ -3,10 +3,8 @@ import pandas as pd
 import joblib
 from sklearn.metrics.pairwise import cosine_similarity
 
-# 1. PAGE CONFIGURATION
 st.set_page_config(page_title="DeadMLSociety", page_icon="🎬", layout="centered")
-
-# 2. CUSTOM CSS (To match your Dark/Red Theme + Animation)
+ 
 st.markdown("""
     <style>
     /* Background Color */
@@ -113,14 +111,14 @@ st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
 
-# 3. LOAD MODELS (Using .pkl for movies)
+# LOAD MODELS 
 @st.cache_resource
 def load_data():
     try:
-        # Load all 3 files as PKL
+        
         vec = joblib.load('vectorizer.pkl')
         mat = joblib.load('matrix.pkl')
-        mov = joblib.load('movies.pkl') # <--- Changed to joblib.load
+        mov = joblib.load('movies.pkl') 
         return vec, mat, mov
     except FileNotFoundError:
         return None, None, None
@@ -130,7 +128,7 @@ def load_data():
 
 vectorizer, matrix, movies = load_data()
 
-# 4. THE UI
+# THE UI
 st.title("DeadMLSociety")
 st.markdown("<p style='text-align: center; font-style: italic; margin-bottom: 40px;'>Show me the heart unfettered by foolish dreams and I'll show you a happy man.</p>", unsafe_allow_html=True)
 
@@ -141,7 +139,7 @@ if movies is not None:
         if user_input.strip():
             with st.spinner("Decoding the films within your words..."):
                 try:
-                    # Logic
+                    
                     user_vec = vectorizer.transform([user_input])
                     similarity = cosine_similarity(user_vec, matrix).flatten()
                     indices = similarity.argsort()[-5:][::-1]
@@ -165,9 +163,6 @@ if movies is not None:
             st.warning("Please enter some text first.")
 else:
     st.error("⚠️ Files missing! Please upload vectorizer.pkl, matrix.pkl, and movies.pkl to GitHub.")
-# ... (your existing code ends here) ...
-
-# --- Footer Link ---
-st.markdown("---") # Adds a visual divider line
+st.markdown("---") 
 st.subheader("Explore More")
 st.link_button("Visit DeadMLSociety ↗", "https://deadml-society.streamlit.app")
